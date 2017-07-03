@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.2</TargetFramework>
+    <TargetFramework>netstandard1.4</TargetFramework>
     <PackOnBuild>true</PackOnBuild>
     <NeutralLanguage>en-US</NeutralLanguage>
     <PackageLicenseUrl>https://github.com/budougumi0617/Testable/blob/master/LICENSE</PackageLicenseUrl>
@@ -15,6 +15,8 @@
     <Summary>Access non public methods and properties for any test framework.</Summary>
     <Title>Testable</Title>
     <Description>PrivateObject for any test framework.</Description>
+    <RepositoryUrl>https://github.com/budougumi0617/Testable</RepositoryUrl>
+    <Version>1.0.0-pre</Version>
   </PropertyGroup>
 
 </Project>
