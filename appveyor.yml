@@ -28,7 +28,7 @@ test_script:
 
     $filter = "+[Testable*]* -[*.Tests*]*"
 
-    & $opencover -register:user -target:nunit-console.exe "-targetargs:$targetargs" "-filter:$filter" -log:All -returntargetcode -hideskipped:All -output:opencoverCoverage.xml
+    & $opencover -register:user -target:nunit-console.exe "-targetargs:$targetargs"  -log:All -returntargetcode -hideskipped:All -output:opencoverCoverage.xml
 
     $env:Path = "C:\Python34;C:\Python34\Scripts;$env:Path"
 
