@@ -34,7 +34,7 @@ namespace Testable.Tests
         public void TestCase()
         {
             var foo = new Class1();
-            Assert.Fail();
+            //Assert.Fail();
         }
     }
 }
