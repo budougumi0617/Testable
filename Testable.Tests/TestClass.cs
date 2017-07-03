@@ -9,7 +9,7 @@ namespace Testable.Tests
         public void TestMethod()
         {
             var c = new Class1();
-            Assert.AreEqual(1, c.Dummy());
+            Assert.AreEqual(10, c.Dummy(5));
         }
     }
 }

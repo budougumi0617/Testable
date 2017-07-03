@@ -36,7 +36,7 @@ namespace Testable
 
         public int Dummy(int n){
             var i = 5;
-            if (n > 10)
+            if (n < 10)
             {
                 i += n;
             }
