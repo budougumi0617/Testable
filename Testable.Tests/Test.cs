@@ -33,6 +33,7 @@ namespace Testable.Tests
         [Test()]
         public void TestCase()
         {
+            var foo = new Class1();
             Assert.Fail();
         }
     }
