@@ -9,8 +9,7 @@ namespace Testable.Tests
         public void TestMethod()
         {
             var c = new Class1();
-            // TODO: Add your test code here
-            Assert.Pass("Your first passing test");
+            Assert.AreEqual(1, c.Dummy());
         }
     }
 }

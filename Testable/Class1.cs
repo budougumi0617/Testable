@@ -29,5 +29,13 @@ namespace Testable
 {
     public class Class1
     {
+        public Class1()
+        {
+            Console.WriteLine("Dummy line.");
+        }
+
+        public int Dummy(){
+            return 1;
+        }
     }
 }
