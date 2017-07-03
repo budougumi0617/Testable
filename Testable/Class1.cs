@@ -42,5 +42,8 @@ namespace Testable
             }
             return i;
         }
+        public static int Sample(){
+            return 10;
+        }
     }
 }
