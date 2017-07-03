@@ -34,8 +34,13 @@ namespace Testable
             //Console.WriteLine("Dummy line.");
         }
 
-        public int Dummy(){
-            return 1;
+        public int Dummy(int n){
+            var i = 5;
+            if (n > 10)
+            {
+                i += n;
+            }
+            return i;
         }
     }
 }
