@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.2</TargetFramework>
+    <PackOnBuild>true</PackOnBuild>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <PackageLicenseUrl>https://github.com/budougumi0617/Testable/blob/master/LICENSE</PackageLicenseUrl>
+    <Copyright>Copyright 2017 budougumi0617</Copyright>
+    <PackageTags>PrivateObject Private UnitTest</PackageTags>
+    <PackageId>Budougumi0617.Testable</PackageId>
+    <PackageVersion>0.0.1-pre</PackageVersion>
+    <Authors>budougumi0617</Authors>
+    <Owners>budougumi0617</Owners>
+    <PackageProjectUrl>https://github.com/budougumi0617/Testable</PackageProjectUrl>
+    <Summary>Access non public methods and properties for any test framework.</Summary>
+    <Title>Testable</Title>
+    <Description>PrivateObject for any test framework.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NuGet.Build.Packaging" Version="0.1.248" />
+  </ItemGroup>
+</Project>
