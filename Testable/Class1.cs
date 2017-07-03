@@ -31,7 +31,7 @@ namespace Testable
     {
         public Class1()
         {
-            Console.WriteLine("Dummy line.");
+            //Console.WriteLine("Dummy line.");
         }
 
         public int Dummy(){
