@@ -29,12 +29,17 @@ test_script:
     $filter = "+[Testable*]* -[*.Tests*]*"
 
     regsvr32 x86\OpenCover.Profiler.dll
+    
     regsvr32 x64\OpenCover.Profiler.dll
 
     echo "test_dll_dir"
+    
     echo $test_dll_dir
+    
     echo "targetargs"
+    
     echo $targetargs
+    
     & $opencover -register:user -target:nunit-console.exe "-targetargs:$targetargs" "-filter:$filter" -log:All -returntargetcode -hideskipped:All "-targetdir:$test_dll_dir" -output:opencoverCoverage.xml
 
     $env:Path = "C:\Python34;C:\Python34\Scripts;$env:Path"
