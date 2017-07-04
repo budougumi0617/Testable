@@ -36,6 +36,8 @@ test_script:
     
     echo $test_dll_dir
     
+    ls $test_dll_dir
+    
     echo "targetargs"
     
     echo $targetargs
