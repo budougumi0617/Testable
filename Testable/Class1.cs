@@ -23,7 +23,6 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
 
 namespace Testable
 {
@@ -34,7 +33,8 @@ namespace Testable
             //Console.WriteLine("Dummy line.");
         }
 
-        public int Dummy(int n){
+        public int Dummy(int n)
+        {
             var i = 5;
             if (n < 10)
             {
@@ -42,7 +42,8 @@ namespace Testable
             }
             return i;
         }
-        public static int Sample(){
+        public static int Sample()
+        {
             return 10;
         }
     }
