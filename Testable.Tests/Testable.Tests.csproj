@@ -39,6 +39,8 @@
   <ItemGroup>
     <Compile Include="TestClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PrivateObjectTests.cs" />
+    <Compile Include="TargetClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
