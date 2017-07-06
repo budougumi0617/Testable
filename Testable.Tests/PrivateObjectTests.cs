@@ -23,32 +23,33 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using NUnit.Framework;
+
 using System;
+using Xunit;
 namespace Testable.Tests
 {
-    [TestFixture]
     public class PrivateObjectTests
     {
         PrivateObject po;
-        [SetUp]
-        public void SetUp(){
+
+        public PrivateObjectTests()
+        {
             Object obj = new TargetClass() as Object;
             po = new PrivateObject(obj);
         }
 
-        [Test, Description("Able to get private field of primitive type."), Category("Basic")]
+        [Fact]//(DisplayName = "Able to get private field of primitive type.")]
         public void GetPrivatePrimitiveInt()
         {
-            int ac = Convert.ToInt32(po.GetField("PrivateInt"));
-            Assert.AreEqual(TargetClass.DefaultInt, ac);
+            var ac = Convert.ToInt32(po.GetField("privateInt"));
+            Assert.Equal(TargetClass.DefaultInt, ac);
         }
 
-		[Test, Description("Able to get private field of primitive type."), Category("Basic")]
+        [Fact]//(DisplayName = "Able to get private field of primitive type.")]
 		public void GetPrivatePrimitiveString()
 		{
-			int ac = Convert.ToInt32(po.GetField("PrivateString"));
-			Assert.AreEqual(TargetClass.DefaultInt, ac);
+            var ac = Convert.ToString(po.GetField("privateString"));
+            Assert.Equal(TargetClass.DefaultString, ac);
 		}
     }
 }
