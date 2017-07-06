@@ -10,7 +10,7 @@ before_build:
 
     git submodule update --init --recursive
 
-    nuget restore Testable.sln
+    nuget restore Testable.sln --packages .\packages
 build:
   project: Testable.sln
   verbosity: minimal
