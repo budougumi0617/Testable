@@ -22,7 +22,7 @@ test_script:
 - ps: >-
     $test_dll_dir = (Resolve-Path "*.Tests\bin\$env:CONFIGURATION\netcoreapp1.1").ToString()
 
-    Get-ChildItem -Recurese -Name
+    Get-ChildItem -Recurse -Name
 
     $opencover = (Resolve-Path ".\packages\OpenCover.*\tools\OpenCover.Console.exe").ToString()
 
