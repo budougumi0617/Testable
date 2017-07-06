@@ -27,12 +27,28 @@ using NUnit.Framework;
 using System;
 namespace Testable.Tests
 {
-    [TestFixture()]
+    [TestFixture]
     public class PrivateObjectTests
     {
-        [Test()]
-        public void TestCase()
-        {
+        PrivateObject po;
+        [SetUp]
+        public void SetUp(){
+            Object obj = new TargetClass() as Object;
+            po = new PrivateObject(obj);
         }
+
+        [Test, Description("Able to get private field of primitive type."), Category("Basic")]
+        public void GetPrivatePrimitiveInt()
+        {
+            int ac = Convert.ToInt32(po.GetField("PrivateInt"));
+            Assert.AreEqual(TargetClass.DefaultInt, ac);
+        }
+
+		[Test, Description("Able to get private field of primitive type."), Category("Basic")]
+		public void GetPrivatePrimitiveString()
+		{
+			int ac = Convert.ToInt32(po.GetField("PrivateString"));
+			Assert.AreEqual(TargetClass.DefaultInt, ac);
+		}
     }
 }

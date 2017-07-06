@@ -31,16 +31,22 @@ namespace Testable.Tests
     /// </summary>
     public class TargetClass
     {
-        public const int DefaultValue = 3;
+        public const int DefaultInt = 3;
+        public const string DefaultString = "Default";
 
-        public int publicMember;
-        private int privateMember;
+        public int publicInt;
+        int privateInt;
+        string privateString;
 
         public TargetClass()
         {
-            publicMember = DefaultValue;
-            privateMember = DefaultValue;
+            publicInt = DefaultInt;
+            privateInt = DefaultInt;
+            privateString = DefaultString;
         }
 
+        public void SetPrivateInt(int i){
+            privateInt = i;
+        }
     }
 }

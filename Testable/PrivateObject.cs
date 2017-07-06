@@ -2,7 +2,7 @@
 namespace Testable
 {
 	/// <summary>
-	/// This is clone of Microsoft.VisualStudio.TestTools.UnitTesting
+	/// Test Utility class like a Microsoft.VisualStudio.TestTools.UnitTesting.PrivateObject.
 	/// </summary>
 	/// <seealso cref="https://msdn.microsoft.com/ja-jp/library/microsoft.visualstudio.testtools.unittesting.privateobject.aspx"/>
 	public class PrivateObject
