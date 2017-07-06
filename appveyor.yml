@@ -32,7 +32,7 @@ test_script:
 
     $filter = "+[Testable*]* -[*.Tests*]*"
 
-    $runner = "%xunit20%\xunit.console.x86.exe"
+    $runner = "dotnet test"
 
     regsvr32 x86\OpenCover.Profiler.dll
 
