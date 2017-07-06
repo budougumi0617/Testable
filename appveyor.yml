@@ -38,12 +38,17 @@ test_script:
 
     regsvr32 x64\OpenCover.Profiler.dll
 
-    echo "runner"
-
-    echo $runner
-
-    & $opencover -register:user -target:$runner -targetargs:$targetargs -filter:$filter -log:All -returntargetcode -hideskipped:All -targetdir:$test_dll_dir -output:opencoverCoverage.xml
-
+    & $opencover \
+    -target:"c:\Program Files\dotnet\dotnet.exe" \
+    -targetargs:"test -f netcoreapp1.1 -c Debug Testable.Tests/Testable.Tests.csproj" \
+    -mergeoutput \
+    -hideskipped:File \
+    -output:opencoverCoverage.xml \
+    -oldStyle \
+    -filter:$filter \
+    -searchdirs:Testable.Tests/bin/Debug/netcoreapp1.1 \
+    -register:user
+    
     $env:Path = "C:\Python34;C:\Python34\Scripts;$env:Path"
 
     python -m pip install --upgrade pip
