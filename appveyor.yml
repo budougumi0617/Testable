@@ -21,6 +21,10 @@ build:
 test_script:
 - ps: >-
     $test_dll_dir = (Resolve-Path "*.Tests\bin\$env:CONFIGURATION\netcoreapp1.1").ToString()
+    
+    ls ~\.nuget\packages\OpenCover
+    
+    ls ~\.nuget\packages\xunit.runner.console
 
     $opencover = (Resolve-Path "~\.nuget\packages\OpenCover\.*\tools\OpenCover.Console.exe").ToString()
 
