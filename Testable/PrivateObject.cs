@@ -25,9 +25,21 @@ namespace Testable
         /// <returns>The value set for the name field.</returns>
         public object GetField(string name)
         {
-            TypeInfo info = target.GetType().GetTypeInfo();
+            var info = target.GetType().GetTypeInfo();
             var f = info.GetField(name, BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.GetField);
             return f.GetValue(target);
         }
+
+		/// <summary>
+		/// Sets a value for the field of the wrapped object, identified by name.
+		/// </summary>
+		/// <param name="name">The name of the field to set a value.</param>
+		/// <param name="value">The value to set.</param>
+		public void SetField(string name, Object value)
+		{
+			var info = target.GetType().GetTypeInfo();
+            var f = info.GetField(name, BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.GetField);
+            f.SetValue(target, value);
+		}
     }
 }

@@ -30,11 +30,13 @@ namespace Testable.Tests
 {
     public class PrivateObjectTests
     {
+        TargetClass target;
         PrivateObject po;
 
         public PrivateObjectTests()
         {
-            Object obj = new TargetClass() as Object;
+            target = new TargetClass();
+            Object obj = target as Object;
             po = new PrivateObject(obj);
         }
 
@@ -50,6 +52,22 @@ namespace Testable.Tests
 		{
             var ac = Convert.ToString(po.GetField("privateString"));
             Assert.Equal(TargetClass.DefaultString, ac);
+		}
+
+		[Fact]//(DisplayName = "Able to set private field of primitive type.")]
+        public void SetPrivatePrimitiveInt()
+		{
+            var expected = 100000;
+            po.SetField("privateInt", expected);
+            Assert.Equal(expected, target.MyIntProperty);
+		}
+
+		[Fact]//(DisplayName = "Able to set private field of primitive type.")]
+		public void SetPrivatePrimitiveString()
+		{
+            var expected = "SetPrivatePrimitiveString";
+			po.SetField("privateString", expected);
+			Assert.Equal(expected, target.MyStringProperty);
 		}
     }
 }

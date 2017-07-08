@@ -45,8 +45,18 @@ namespace Testable.Tests
             privateString = DefaultString;
         }
 
-        public void SetPrivateInt(int i){
-            privateInt = i;
+        public int MyIntProperty
+        {
+            get{
+                return privateInt;
+            }
+        }
+
+        public string MyStringProperty
+        {
+            get{
+                return privateString;
+            }
         }
     }
 }
