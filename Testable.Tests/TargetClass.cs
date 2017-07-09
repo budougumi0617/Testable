@@ -58,5 +58,13 @@ namespace Testable.Tests
                 return privateString;
             }
         }
+
+        private int addOne(int n){
+            return n + 1;
+        }
+
+        private int addOne(){
+            return 1;
+        }
     }
 }

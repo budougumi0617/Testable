@@ -48,26 +48,44 @@ namespace Testable.Tests
         }
 
         [Fact]//(DisplayName = "Able to get private field of primitive type.")]
-		public void GetPrivatePrimitiveString()
-		{
+        public void GetPrivatePrimitiveString()
+        {
             var ac = Convert.ToString(po.GetField("privateString"));
             Assert.Equal(TargetClass.DefaultString, ac);
-		}
+        }
 
-		[Fact]//(DisplayName = "Able to set private field of primitive type.")]
+        [Fact]//(DisplayName = "Able to set private field of primitive type.")]
         public void SetPrivatePrimitiveInt()
-		{
+        {
             var expected = 100000;
             po.SetField("privateInt", expected);
             Assert.Equal(expected, target.MyIntProperty);
-		}
+        }
 
-		[Fact]//(DisplayName = "Able to set private field of primitive type.")]
-		public void SetPrivatePrimitiveString()
-		{
+        [Fact]//(DisplayName = "Able to set private field of primitive type.")]
+        public void SetPrivatePrimitiveString()
+        {
             var expected = "SetPrivatePrimitiveString";
-			po.SetField("privateString", expected);
-			Assert.Equal(expected, target.MyStringProperty);
+            po.SetField("privateString", expected);
+            Assert.Equal(expected, target.MyStringProperty);
+        }
+
+        [Fact]//(DisplayName = "Able to execute private method.")]
+        public void ExecutePrivateMethod()
+        {
+            var n = 10;
+            var argTypes = new Type[] { typeof(int) };
+            var args = new Object[] { n };
+            var ac = Convert.ToInt32(po.Invoke("addOne", argTypes, args));
+            Assert.Equal(n + 1, ac);
+        }
+
+		[Fact]//(DisplayName = "Able to execute private method.")]
+		public void ExecutePrivateNonParameterMethod()
+		{
+			var expected = 1;
+            var ac = Convert.ToInt32(po.Invoke("addOne", new Type[0], new Object[0]));
+            Assert.Equal(expected, ac);
 		}
     }
 }
