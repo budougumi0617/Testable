@@ -35,5 +35,5 @@ po.SetField("privateInt", 1000);
 |`PrivateObject(Object)`|Initializes a new instance of the PrivateObject class that creates the wrapper for the specified object.|
 |`GetField(String)`|Gets a value from a named field, based on the name.|
 |`SetField(String, Object)`|Sets a value for the field of the wrapped object, identified by name.|
-|`Invoke(String, Object[])`|Used to access the methods of the private object.|
+|`Invoke(String, Type[], Object[])`|Used to access the methods of the private object.|
 |???|Now implementing...|
