@@ -1,5 +1,5 @@
 ﻿//
-// TargetClass.cs
+// PrivateStaticAccessorTests.cs
 //
 // Author:
 //       budougumi0617 <budougumi0617@gmail.com>
@@ -24,61 +24,21 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using Xunit;
 namespace Testable.Tests
 {
-    /// <summary>
-    /// Target class has many private members.
-    /// </summary>
-    public class TargetClass
+    public class PrivateStaticAccessorTests
     {
-        public const int DefaultInt = 3;
-        public const string DefaultString = "Default";
-
-        public int publicInt;
-        int privateInt;
-        static int privateStaticInt = DefaultInt;
-        string privateString;
-        static string privateStaticString = DefaultString;
-
-        public TargetClass()
+        public PrivateStaticAccessorTests()
         {
-            publicInt = DefaultInt;
-            privateInt = DefaultInt;
-            privateString = DefaultString;
+            TargetClass.SetPrivateStaticInt();
+            TargetClass.SetPrivateStaticString();
         }
 
-        public int MyIntProperty
-        {
-            get{
-                return privateInt;
-            }
-        }
-
-        public string MyStringProperty
-        {
-            get{
-                return privateString;
-            }
-        }
-
-        int addOne(int n){
-            return n + 1;
-        }
-
-        int addOne(){
-            return 1;
-        }
-
-        static string throughString(string s){
-            return s;
-        }
-
-        public static void SetPrivateStaticInt(){
-            privateStaticInt = DefaultInt;
-        }
-
-        public static void SetPrivateStaticString(){
-            privateStaticString = DefaultString;
+        [Fact]
+        public void GetPrivateStaticIntTest(){
+            var actual = typeof(TargetClass).GetStaticField("privateStaticString") as string;
+            Assert.Equal(TargetClass.DefaultString, actual);
         }
     }
 }

@@ -39,7 +39,7 @@ namespace Testable
         public void SetField(string name, Object value)
         {
             var info = target.GetType().GetTypeInfo();
-            var f = info.GetField(name, BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.GetField);
+            var f = info.GetField(name, BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetField);
             f.SetValue(target, value);
         }
 
