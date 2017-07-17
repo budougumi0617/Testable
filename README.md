@@ -6,10 +6,13 @@
 
 # Introduction
 
-Allows test code to call fiealds, ~~methods, and properties~~ even if non public, like a `PrivateObject`.
+Allows test code to call fiealds, methods, ~~and properties~~ even if non public, like a `PrivateObject`.
 
 [Microsoft.VisualStudio.TestTools.UnitTesting.PrivateObject](https://msdn.microsoft.com/ja-jp/library/microsoft.visualstudio.testtools.unittesting.privateobject.aspx)
 
+And, you can call static fiealds like a `PrivateType`. but, you do not need create wrapper instance if you want to call static members. 
+
+[Microsoft.VisualStudio.TestTools.UnitTesting.PrivateType](https://msdn.microsoft.com/ja-jp/library/microsoft.visualstudio.testtools.unittesting.privatetype.aspx)
 
 # How to use
 
@@ -19,16 +22,25 @@ Easy sample is below. If you want to read more example, please check [test codes
  public class TargetClass
  {
      private int privateInt;
+     private static privateStaticInt;
  }
 
 ---
 
 PrivateObject pivateObject = new PrivateObject(new TargetClass() as Object);
-int privateIntField = Convert.ToString(po.GetField("privateInt"));
+int privateIntField = Convert.ToInt32(po.GetField("privateInt"));
 po.SetField("privateInt", 1000);
+
+
+// Access static field by extension methods.
+
+typeof(TargetClass).SetStaticField("privateStaticInt", 100);
+int privateStaticIntField = Convert.ToInt32(typeof(TargetClass).GetStaticField("privateStaticInt"));
 ```
 
 # Features
+
+## `Testable.PrivateObject`
 
 |Method|Description|
 |---|---|
@@ -36,4 +48,11 @@ po.SetField("privateInt", 1000);
 |`GetField(String)`|Gets a value from a named field, based on the name.|
 |`SetField(String, Object)`|Sets a value for the field of the wrapped object, identified by name.|
 |`Invoke(String, Type[], Object[])`|Used to access the methods of the private object.|
+|???|Now implementing...|
+
+## `Testable.PrivateStaticAccessor`
+|Method|Description|
+|---|---|
+|`GetStaticField(this Type, string)`|Gets a value from a named static field, based on the name.|
+|`SetStaticField(this Type, string, Object)`|Sets a value for a named static field, identified by name.|
 |???|Now implementing...|
