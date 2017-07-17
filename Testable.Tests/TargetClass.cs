@@ -49,36 +49,50 @@ namespace Testable.Tests
 
         public int MyIntProperty
         {
-            get{
+            get
+            {
                 return privateInt;
             }
         }
 
         public string MyStringProperty
         {
-            get{
+            get
+            {
                 return privateString;
             }
         }
 
-        int addOne(int n){
+        int addOne(int n)
+        {
             return n + 1;
         }
 
-        int addOne(){
+        int addOne()
+        {
             return 1;
         }
 
-        static string throughString(string s){
+        static string throughString(string s)
+        {
             return s;
         }
 
-        public static void SetPrivateStaticInt(){
+        public static void SetPrivateStaticInt()
+        {
             privateStaticInt = DefaultInt;
         }
 
-        public static void SetPrivateStaticString(){
-            privateStaticString = DefaultString;
+        public static string StaticStringProperty
+        {
+            get
+            {
+                return privateStaticString;
+            }
+            set
+            {
+                privateStaticString = value;
+            }
         }
     }
 }

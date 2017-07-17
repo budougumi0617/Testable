@@ -32,13 +32,22 @@ namespace Testable.Tests
         public PrivateStaticAccessorTests()
         {
             TargetClass.SetPrivateStaticInt();
-            TargetClass.SetPrivateStaticString();
+            TargetClass.StaticStringProperty = TargetClass.DefaultString;
         }
 
         [Fact]
-        public void GetPrivateStaticIntTest(){
+        public void GetPrivateStaticStringTest()
+        {
             var actual = typeof(TargetClass).GetStaticField("privateStaticString") as string;
             Assert.Equal(TargetClass.DefaultString, actual);
+        }
+
+        [Fact]
+        public void SetPrivateStaticStringTest()
+        {
+            var expected = "SetPrivateStaticStringTest";
+            typeof(TargetClass).SetStaticField("privateStaticString", expected);
+            Assert.Equal(expected, TargetClass.StaticStringProperty);
         }
     }
 }

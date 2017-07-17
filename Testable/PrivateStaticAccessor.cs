@@ -28,12 +28,36 @@ using System.Reflection;
 
 namespace Testable
 {
+    /// <summary>
+    /// PrivateStaticAccessor has extension methods to access private static fields, and execute private static methods.
+    /// Each methods extend <see cref="System.Type"/> class.
+    /// </summary>
     public static class PrivateStaticAccessor
     {
-        public static object GetStaticField(this Type t, string name){
+        /// <summary>
+        /// Gets a value from a named static field, based on the name.
+        /// </summary>
+        /// <param name="t">The <see cref="System.Type"/> of class has private field</param>
+        /// <param name="name">The name of the private field to get.</param>
+        /// <returns>The value set for the name field.</returns>
+        public static object GetStaticField(this Type t, string name)
+        {
             var info = t.GetTypeInfo();
             var f = info.GetField(name, BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.GetField);
             return f.GetValue(null);
+        }
+
+        /// <summary>
+        /// Sets a value for a named static field, identified by name.
+        /// </summary>
+        /// <param name="t">The <see cref="System.Type"/> of class has private field</param>
+        /// <param name="name">The name of the field to set a value.</param>
+        /// <param name="value">The value to set.</param>
+        public static void SetStaticField(this Type t, string name, Object value)
+        {
+            var info = t.GetTypeInfo();
+            var f = info.GetField(name, BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.SetField);
+            f.SetValue(null, value);
         }
     }
 }

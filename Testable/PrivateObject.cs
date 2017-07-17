@@ -62,13 +62,13 @@ namespace Testable
 
             foreach (var memberInfo in members)
             {
-                if(memberInfo.MemberType != MemberTypes.Method)
+                if (memberInfo.MemberType != MemberTypes.Method)
                 {
                     continue;
                 }
                 var mi = memberInfo as MethodInfo;
                 var parms = mi.GetParameters();
-                if(argTypes == null ||  args.Length == 0 && parms.Length == 0)
+                if (argTypes == null || args.Length == 0 && parms.Length == 0)
                 {
                     return mi.Invoke(target, new Object[0]);
                 }
