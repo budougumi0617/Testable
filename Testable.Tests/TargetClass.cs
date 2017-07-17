@@ -36,7 +36,9 @@ namespace Testable.Tests
 
         public int publicInt;
         int privateInt;
+        static int privateStaticInt = DefaultInt;
         string privateString;
+        static string privateStaticString = DefaultString;
 
         public TargetClass()
         {
@@ -59,12 +61,16 @@ namespace Testable.Tests
             }
         }
 
-        private int addOne(int n){
+        int addOne(int n){
             return n + 1;
         }
 
-        private int addOne(){
+        int addOne(){
             return 1;
+        }
+
+        static string throughString(string s){
+            return s;
         }
     }
 }
