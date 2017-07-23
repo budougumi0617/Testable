@@ -6,7 +6,7 @@
 
 # Introduction
 
-Allows test code to call fiealds, methods, ~~and properties~~ even if non public, like a `PrivateObject`.
+Allows test code to call fields, methods, ~~and properties~~ even if non public, like a `PrivateObject`.
 
 [Microsoft.VisualStudio.TestTools.UnitTesting.PrivateObject](https://msdn.microsoft.com/ja-jp/library/microsoft.visualstudio.testtools.unittesting.privateobject.aspx)
 
