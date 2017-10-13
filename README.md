@@ -21,8 +21,12 @@ Easy sample is below. If you want to read more example, please check [test codes
 ```cs
  public class TargetClass
  {
-     private int privateInt;
-     private static privateStaticInt;
+    private int privateInt;
+    private static privateStaticInt;
+    static string throughString(string s)
+    {
+        return s;
+    }
  }
 
 ---
@@ -32,10 +36,18 @@ int privateIntField = Convert.ToInt32(po.GetField("privateInt"));
 po.SetField("privateInt", 1000);
 
 
-// Access static field by extension methods.
+// Access private static field by extension methods.
 
 typeof(TargetClass).SetStaticField("privateStaticInt", 100);
 int privateStaticIntField = Convert.ToInt32(typeof(TargetClass).GetStaticField("privateStaticInt"));
+
+typeof(TargetClass).SetStaticField("privateStaticMethod", 100);
+
+// Call private static method by extension methods.
+
+var argTypes = new Type[] { typeof(string) };
+var args = new Object[] { "arguments" };
+var returnString = (string)typeof(TargetClass).InvokeStatic("throughString", argTypes, args); 
 ```
 
 # Features
@@ -55,4 +67,5 @@ int privateStaticIntField = Convert.ToInt32(typeof(TargetClass).GetStaticField("
 |---|---|
 |`GetStaticField(this Type, string)`|Gets a value from a named static field, based on the name.|
 |`SetStaticField(this Type, string, Object)`|Sets a value for a named static field, identified by name.|
+|`InvokeStatic(this Type, string, Type[], Object[])`|Invokes static method.|
 |???|Now implementing...|
