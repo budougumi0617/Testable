@@ -2,7 +2,7 @@ version: 0.0.{build}
 pull_requests:
   do_not_increment_build_number: true
 image: Visual Studio 2017
-configuration: Debug
+configuration: Release
 platform: Any CPU
 before_build:
 - cmd: >-
@@ -12,6 +12,7 @@ before_build:
 
     dotnet restore Testable.sln
 build:
+  publish_nuget: true
   project: Testable.sln
   verbosity: minimal
 
@@ -52,11 +53,11 @@ test_script:
     &{codecov -f "opencoverCoverage.xml"}
 
 # For Nuget .NET Standard project
-after_test:
-- ps: >-
-    dotnet build Testable -c "Release"
+#after_test:
+#- ps: >-
+#    dotnet build Testable -c "Release"
 
-    dotnet pack Testable -c "Release"
+#    dotnet pack Testable -c "Release"
 # publish NuGet package on tag build
 deploy:
 - provider: NuGet
