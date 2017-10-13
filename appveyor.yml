@@ -12,11 +12,11 @@ before_build:
 
     dotnet restore Testable.sln
 build:
-  project: Testable.sln
-  verbosity: minimal
-# Set OpenCover setting according to below URL
 # For Nuget .NET Standard project
-  publish_nuget: true
+- ps: >-
+    dotnet build -c $env:configuration
+
+    dotnet pack Testable -c $env:configuration
 
 # Set OpenCover setting according to below URL
 # https://github.com/OpenCover/opencover/wiki/Usage
@@ -46,7 +46,7 @@ test_script:
     -filter:$filter `
     -searchdirs:Testable.Tests/bin/Debug/netcoreapp1.1 `
     -register:user
-    
+
     $env:Path = "C:\Python34;C:\Python34\Scripts;$env:Path"
 
     python -m pip install --upgrade pip
