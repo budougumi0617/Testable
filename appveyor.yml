@@ -52,13 +52,6 @@ test_script:
 
     &{codecov -f "opencoverCoverage.xml"}
 
-# For Nuget .NET Standard project
-#after_test:
-#- ps: >-
-#    dotnet build Testable -c "Release"
-
-#    dotnet pack Testable -c "Release"
-# publish NuGet package on tag build
 deploy:
 - provider: NuGet
   api_key:
@@ -66,8 +59,8 @@ deploy:
     # https://ci.appveyor.com/tools/encrypt
     secure: v4SxXNBkW6f0ycDkbM51EJaFjOj9YO9yjur/hWAT61F3jYL7eV2kucNMcIas4mtw
   artifact: /.*\.nupkg/
-  #  on:
-  #  appveyor_repo_tag: true
+  on:
+    appveyor_repo_tag: true
 notifications:
 - provider: GitHubPullRequest
   on_build_success: true
