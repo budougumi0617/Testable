@@ -53,12 +53,36 @@ namespace Testable.Tests
         [Fact]
         public void InvokeStaticTest()
         {
+            var expected = 1;
+
+            var argTypes = new Type[] { };
+            var args = new Object[] { };
+            var actual = (int)typeof(TargetClass).InvokeStatic("staticAddOne", argTypes, args);
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void InvokeStaticWithParameterTest()
+        {
             var expected = "input string";
 
             var argTypes = new Type[] { typeof(string) };
             var args = new Object[] { expected };
             var actual = (string)typeof(TargetClass).InvokeStatic("throughString", argTypes, args);
             Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void InvokeStaticThrowExceptionTest()
+        {
+
+            var argTypes = new Type[] { };
+            var args = new Object[] { };
+            Exception ex = Assert.Throws<InvalidOperationException>(
+                () => typeof(TargetClass).InvokeStatic("notExistMethod", argTypes, args));
+
+            Assert.Equal("Cannot find method:notExistMethod", ex.Message);
+
         }
     }
 }

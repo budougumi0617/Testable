@@ -97,7 +97,7 @@ namespace Testable
                     return mi.Invoke(null, args);
                 }
             }
-            throw new InvalidOperationException("Cannot find method.");
+            throw new InvalidOperationException("Cannot find method:" + name);
         }
     }
 }
