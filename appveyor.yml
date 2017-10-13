@@ -2,7 +2,7 @@ version: 0.0.{build}
 pull_requests:
   do_not_increment_build_number: true
 image: Visual Studio 2017
-configuration: Release
+configuration: Debug
 platform: Any CPU
 before_build:
 - cmd: >-
@@ -14,12 +14,6 @@ before_build:
 build:
   project: Testable.sln
   verbosity: minimal
-after_build:
-# For Nuget .NET Standard project
-- ps: >-
-    dotnet build -c "$env:CONFIGURATION"
-
-    dotnet pack Testable -c "$env:CONFIGURATION"
 
 # Set OpenCover setting according to below URL
 # https://github.com/OpenCover/opencover/wiki/Usage
@@ -57,6 +51,12 @@ test_script:
 
     &{codecov -f "opencoverCoverage.xml"}
 
+build_success:
+# For Nuget .NET Standard project
+- ps: >-
+    dotnet build -c "Release"
+
+    dotnet pack Testable -c "Release"
 notifications:
 - provider: GitHubPullRequest
   on_build_success: true
