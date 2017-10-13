@@ -53,12 +53,11 @@ namespace Testable.Tests
         [Fact]
         public void InvokeStaticTest()
         {
-            var n = 10;
+            var expected = "input string";
 
-            var argTypes = new Type[] { typeof(int) };
-            var args = new Object[] { n };
-            var expected = n + 1;
-            int actual = (int)typeof(TargetClass).InvokeStatic("privateAddOne", argTypes, args);
+            var argTypes = new Type[] { typeof(string) };
+            var args = new Object[] { expected };
+            var actual = (string)typeof(TargetClass).InvokeStatic("throughString", argTypes, args);
             Assert.Equal(expected, actual);
         }
     }

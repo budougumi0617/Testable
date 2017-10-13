@@ -24,6 +24,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Linq;
 using System.Reflection;
 
 namespace Testable
@@ -73,7 +74,30 @@ namespace Testable
         /// <param name="args">Any arguments that the member requires.</param>
         public static Object InvokeStatic(this Type t, string name, Type[] argTypes, Object[] args)
         {
-            throw new NotImplementedException();
+            // TODO Need to validate argTypes, args are samg length.
+            var info = t.GetTypeInfo();
+            var members = info.GetMember(name, BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.InvokeMethod);
+            Console.WriteLine(members);
+
+            foreach (var memberInfo in members)
+            {
+                if (memberInfo.MemberType != MemberTypes.Method)
+                {
+                    continue;
+                }
+                var mi = memberInfo as MethodInfo;
+                var parms = mi.GetParameters();
+                if (argTypes == null || args.Length == 0 && parms.Length == 0)
+                {
+                    return mi.Invoke(null, new Object[0]);
+                }
+                if (parms.Length == argTypes.Length
+                   && parms.Select(p => p.ParameterType).SequenceEqual(argTypes))
+                {
+                    return mi.Invoke(null, args);
+                }
+            }
+            throw new InvalidOperationException("Cannot find method.");
         }
     }
 }
