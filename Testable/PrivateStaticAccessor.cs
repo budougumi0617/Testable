@@ -24,6 +24,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Linq;
 using System.Reflection;
 
 namespace Testable
@@ -58,6 +59,41 @@ namespace Testable
             var info = t.GetTypeInfo();
             var f = info.GetField(name, BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.SetField);
             f.SetValue(null, value);
+        }
+
+        /// <summary>
+        /// Invokes static methods of the target class.
+        /// </summary>
+        /// <param name="t">The <see cref="System.Type"/> of class has private method</param>
+        /// <param name="name">The name of the method to invoke.</param>
+        /// <param name="argTypes">
+        /// An array of Type objects that represents the number, order, and type of the parameters for the method to access.
+        /// -or-
+        /// An empty array of the type Type(that is, Type[] types = new Type[0]) to get a method that takes no parameters.
+        /// </param>
+        /// <param name="args">Any arguments that the member requires.</param>
+        public static Object InvokeStatic(this Type t, string name, Type[] argTypes, Object[] args)
+        {
+            // TODO Need to validate argTypes, args are samg length.
+            var info = t.GetTypeInfo();
+            var members = info.GetMember(name, BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.InvokeMethod);
+            Console.WriteLine(members);
+
+            foreach (var memberInfo in members)
+            {
+                var mi = memberInfo as MethodInfo;
+                var parms = mi.GetParameters();
+                if (argTypes == null || args.Length == 0 && parms.Length == 0)
+                {
+                    return mi.Invoke(null, new Object[0]);
+                }
+                if (parms.Length == argTypes.Length
+                   && parms.Select(p => p.ParameterType).SequenceEqual(argTypes))
+                {
+                    return mi.Invoke(null, args);
+                }
+            }
+            throw new InvalidOperationException("Cannot find method:" + name);
         }
     }
 }

@@ -78,6 +78,11 @@ namespace Testable.Tests
             return s;
         }
 
+        static int staticAddOne()
+        {
+            return 1;
+        }
+
         public static void SetPrivateStaticInt()
         {
             privateStaticInt = DefaultInt;
