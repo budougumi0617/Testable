@@ -15,16 +15,16 @@ build:
   project: Testable.sln
   verbosity: minimal
 after_build:
-- ps: >-
 # For Nuget .NET Standard project
-    dotnet build -c $env:CONFIGURATION
-
-    dotnet pack Testable -c $env:CONFIGURATION
-
-test_script:
 - ps: >-
+    dotnet build -c "$env:CONFIGURATION"
+
+    dotnet pack Testable -c "$env:CONFIGURATION"
+
 # Set OpenCover setting according to below URL
 # https://github.com/OpenCover/opencover/wiki/Usage
+test_script:
+- ps: >-
     $test_dll_dir = (Resolve-Path "*.Tests\bin\$env:CONFIGURATION\netcoreapp1.1").ToString()
 
     $opencover = (Resolve-Path "~\.nuget\packages\OpenCover\4.6.519\tools\OpenCover.Console.exe").ToString()
