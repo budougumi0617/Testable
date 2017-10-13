@@ -51,7 +51,7 @@ test_script:
 
     &{codecov -f "opencoverCoverage.xml"}
 
-build_success:
+after_test:
 # For Nuget .NET Standard project
 - ps: >-
     dotnet build -c "Release"
