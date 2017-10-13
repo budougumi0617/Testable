@@ -47,6 +47,10 @@ namespace Testable.Tests
             privateString = DefaultString;
         }
 
+        int privateAddOne(int i){
+            return i + 1;
+        }
+
         public int MyIntProperty
         {
             get

@@ -49,5 +49,17 @@ namespace Testable.Tests
             typeof(TargetClass).SetStaticField("privateStaticString", expected);
             Assert.Equal(expected, TargetClass.StaticStringProperty);
         }
+
+        [Fact]
+        public void InvokeStaticTest()
+        {
+            var n = 10;
+
+            var argTypes = new Type[] { typeof(int) };
+            var args = new Object[] { n };
+            var expected = n + 1;
+            int actual = (int)typeof(TargetClass).InvokeStatic("privateAddOne", argTypes, args);
+            Assert.Equal(expected, actual);
+        }
     }
 }

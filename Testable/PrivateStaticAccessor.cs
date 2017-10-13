@@ -59,5 +59,21 @@ namespace Testable
             var f = info.GetField(name, BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.SetField);
             f.SetValue(null, value);
         }
+
+        /// <summary>
+        /// Invokes static methods of the target class.
+        /// </summary>
+        /// <param name="t">The <see cref="System.Type"/> of class has private method</param>
+        /// <param name="name">The name of the method to invoke.</param>
+        /// <param name="argTypes">
+        /// An array of Type objects that represents the number, order, and type of the parameters for the method to access.
+        /// -or-
+        /// An empty array of the type Type(that is, Type[] types = new Type[0]) to get a method that takes no parameters.
+        /// </param>
+        /// <param name="args">Any arguments that the member requires.</param>
+        public static Object InvokeStatic(this Type t, string name, Type[] argTypes, Object[] args)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
