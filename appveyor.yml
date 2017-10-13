@@ -17,9 +17,9 @@ build:
 after_build:
 - ps: >-
 # For Nuget .NET Standard project
-    dotnet build -c $env:configuration
+    dotnet build -c $env:CONFIGURATION
 
-    dotnet pack Testable -c $env:configuration
+    dotnet pack Testable -c $env:CONFIGURATION
 
 test_script:
 - ps: >-
